@@ -36,16 +36,3 @@ class WaCareTest(unittest.TestCase):
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(WaCareTest)  
     unittest.TextTestRunner(verbosity=0).run(suite)
-
-
-
-
-
-
-
-
-
-
-
-
-

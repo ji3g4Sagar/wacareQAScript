@@ -8,7 +8,7 @@ from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from appium.webdriver import Remote
+from appium.webdriver import Remote #for keyevent
 
 class script():
 	def __init__(self, driver):
@@ -21,9 +21,9 @@ class script():
 	
 	def Topic(self):
 		self.wf.explicitWaitByResourceID("com.lavidatec.wacareqaexternal:id/fl_homeHealthVideoTitle")
-		print("------開始測試「點擊當週主題」------\n")	
 		self.ck.clickFromManyThingsByResourceID("com.lavidatec.wacareqaexternal:id/home_tab_icon", 2)
 		self.wf.explicitWaitByResourceID("com.lavidatec.wacareqaexternal:id/lin_content")
+		print("------開始測試「點擊當週主題」------\n")	
 		self.ck.clickByResourceID("com.lavidatec.wacareqaexternal:id/tv_forumTopicTitle")
 		self.wf.explicitWaitByResourceID("com.lavidatec.wacareqaexternal:id/tv_ask")
 		self.wf.implicitWait()

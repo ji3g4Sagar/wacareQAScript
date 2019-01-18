@@ -59,11 +59,21 @@ class enterContext():
 
 	def enter(self, context, resource_id):
 		try:
-			testfiled = self.driver.find_element_by_id(resource_id)
+			textfiled = self.driver.find_element_by_id(resource_id)
 		except:
 			print("[Enter string]Can not find the target %s" % resource_id)
 		else:
-			testfiled.set_text(context)
+			textfiled.set_text(context)
+
+	def enterSelectByTextviewText(self, context, textviewText): #利用Textview預設文字選擇
+		try:
+			message = '//*[@text=\'{}\']'.format(textviewText)
+			target = self.driver.find_element_by_xpath(message)
+		except:
+			print("[enterSelectByTextviewText] Selecting target  %s can not be locate!" % textviewText)
+		else:
+			target.send_keys(context)
+			#target.set_text(context)
 class click():
 	def __init__(self, driver):
 		try:
@@ -88,16 +98,6 @@ class click():
 			print("[click]Can not find the target %s" % resource_class)
 		else:
 			target.click()
-
-	def clickByImageButton(self):
-		try:
-			target = self.driver.find_element_by_xpath("//android.widget.ImageButton[@index='0'")
-			self.driver.implicitWait(time=3)
-		except:
-			print("[click}Can not find the target with ImageButton\n")
-		else:
-			target.click()
-
 	
 	def clickByString(self, targetString):
 		try:
@@ -165,7 +165,6 @@ class getToast():
 		self.driver = driver
 
 	def search4Toast(self, toastMessage):
-		#print (target.text)
 		try:
 			message = '//*[@text=\'{}\']'.format(toastMessage)
 			target = self.driver.find_element_by_xpath(message)
@@ -175,6 +174,21 @@ class getToast():
 			print("Toast does not exist!!!" )
 		else:
 			print("FInd toast!!!!")
+class findSpecificText():
+	def __init__(self, driver):
+		self.driver = driver
+	def findText(self, targetText):
+		try:
+			message = '//*[@text=\'{}\']'.format(targetText)
+			target = self.driver.find_element_by_xpath(message)
+		except:
+			print("[findSpecificText]Can not locate target text %s" % targetText)
+		else:
+			print("Successfully find the target text %s" % targetText)
+			return target
+			
+
+
 
 # 目前已知選擇器 
 	#  - find_element_by_accessibility_id
