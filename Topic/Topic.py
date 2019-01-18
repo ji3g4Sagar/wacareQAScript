@@ -7,6 +7,7 @@ import os
 import unittest
 from appium import webdriver
 from TopicScript import script
+from apkVersionAndCellConfig import Config
 
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
@@ -14,23 +15,21 @@ PATH = lambda p: os.path.abspath(
 
 class WaCareTest(unittest.TestCase):
 	def setUp(self):
-		desired_caps = {} # Appium收到http Request後會解析這個key-value pair
-		app = ('http://35.194.192.102:5000/getfile?filename=qaExternalWaCare-v1.0.3.1.1.apk')
-		desired_caps['app'] = app
-		desired_caps['platformName'] = 'Android' #定義測試的系統環境
-		desired_caps['platformVersion'] = '5.1.1' #定義版本
-		desired_caps['deviceName'] = 'Android Emulator' #定義裝置名稱
-		desired_caps['automationName'] = 'uiautomator2'
-		desired_caps['noReset'] = 'true'
-		self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+		configfile = Config()
+		self.driver = configfile.getDriver()
 		self.driver.implicitly_wait(10)#隱式等待
+		self.apkVersionIdName = configfile.getApkVersionIdName()
 
 	def tearDown(self):
 		self.driver.quit()
 
 	def test(self):
-		test = script(self.driver)
-		test.Topic()
+		test = script(self.driver, self.apkVersionIdName)
+		test.waittingForLoginFinish()
+		test.clickCurrentTopic()
+		test.swipeInTopicPage()
+		test.backBtn()	
+		test.checkArticle()
 
 
 if __name__ == '__main__':

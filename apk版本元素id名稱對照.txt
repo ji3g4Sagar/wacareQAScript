@@ -1,0 +1,4 @@
+WaCare_Dev -> com.lavidatec.wacaredev   -> devWaCaare-vNumber.apk
+WaCare_QAEx -> com.lavidatec.wacareqaexternal -> qaExternalWaCaare-vNumber.apk
+WaCare_PreAlpha -> com.lavidatec.wacareprealpha ->preAlphaWaCare-qa-vNumber.apk
+WaCare -> com.lavidatec.wacare ->proWaCare-vNumber.apk
