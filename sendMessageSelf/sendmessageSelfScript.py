@@ -20,6 +20,8 @@ class script():
 		self.wf = waittingFor(driver)
 		self.gt = getToast(driver)
 		self.ft = findSpecificText(driver)
+		reload(sys)
+		sys.setdefaultencoding('utf-8')
 
 	def waittingforloginfinish(self):
 		self.wf.explicitWaitByResourceID("com.lavidatec.wacareqaexternal:id/fl_homeHealthVideoTitle")
