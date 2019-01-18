@@ -89,7 +89,7 @@ class script():
 		T = target.find_element_by_class_name("android.widget.EditText")
 		for i in range(len(T.text)):
 			self.driver.keyevent("67")
-		T.send_keys("編輯過後的文字!")
+		T.send_keys("String after edited")
 		self.ck.clickByString("上傳")
 		self.gt.search4Toast("上傳完成")
 		#下面利用子元素選擇的方法選擇imagebutton
