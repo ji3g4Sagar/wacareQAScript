@@ -84,7 +84,7 @@ class click():
 	def clickByResourceID(self, resource_id):
 		try:
 			target = self.driver.find_element_by_id(resource_id)
-			self.driver.implicitly_wait(3)
+			#self.driver.implicitly_wait(3)
 		except:
 			print("[click]Can not find the target %s " % resource_id)
 		else:

@@ -28,3 +28,6 @@ class Config():
 			return ("com.lavidatec.wacaredev:id")
 		elif(self.apkName.startswith("pre")):
 			return ("com.lavidatec.wacareprealpha:id")
+
+
+
